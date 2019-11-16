@@ -3,7 +3,7 @@ def two_sum_helper(l, start, end, s):
         return None
 
     if l[start] + l[end] == s:
-        return [start, end]
+        return [l[start], l[end]]
 
     sol1 = two_sum_helper(l, start + 1, end, s)
     if sol1:
@@ -14,8 +14,12 @@ def two_sum_helper(l, start, end, s):
 
 
 def two_sum(l, s):
-    l.sort()
-    return two_sum_helper(l, 0, len(l) - 1, s)
+    l2 = sorted(l)
+    result = two_sum_helper(l2, 0, len(l) - 1, s)
+    if not result:
+        return result
+
+    return [l.index(result[0]), l.index(result[1])]
 
 
 import pytest
@@ -26,7 +30,9 @@ import random
 def test_intersect(i):
     rng = random.SystemRandom()
     al = [rng.randint(1, 100) for x in range(rng.randint(10, 20))]
-    s = rng.randint(1, 200)
+    als = sorted(al)
+    aln = len(al)
+    s = rng.randint(als[0] + als[1], als[aln - 1] + als[aln - 2])
     result = two_sum(al, s)
     print(al, s)
     if result is not None:
