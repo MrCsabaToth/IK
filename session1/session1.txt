@@ -1,0 +1,6 @@
+HW 0: Quicksort with 3-way partitioning
+HW 1: Two sum
+HW 2: Three sum
+HW 3: given time domain boundaries, are there any which overlap?
+HW 4: extend intesrect and union to three sorted arrays
+
