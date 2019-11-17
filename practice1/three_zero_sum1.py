@@ -23,6 +23,7 @@ def findZeroSum(arr):
                 solution = [str(s) for s in sol]
                 if solution not in results:
                     results.append(solution)
+
                 start += 1
                 end -= 1
             elif balance < target:
