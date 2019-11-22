@@ -7,4 +7,7 @@ HW 2: implement Perm II with an eliminated slate
 
 HW 3: subsets with duplicate items
 
-Leetcode 77.
+Leetcode 77. Combinations
+
+Leetcode 22. n number of parantheses pairs, list all well formed combinations
+
