@@ -2,3 +2,5 @@ HW 1: Leetcode 50. Pow(x, n) = x ^ n
 Leetcode 784. Letter Case Permutation
 Leetcode 78. Subsets
 
+47. Permutations II: duplicate items
+
