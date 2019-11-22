@@ -3,4 +3,8 @@ Leetcode 784. Letter Case Permutation
 Leetcode 78. Subsets
 
 47. Permutations II: duplicate items
+HW 2: implement Perm II with an eliminated slate
 
+HW 3: subsets with duplicate items
+
+Leetcode 77.
