@@ -1,9 +1,10 @@
 def nqueen_helper(cols, rows, colinv, rowinv, n):
     # Leaf node
     if len(cols) == n:
-        return [",".join(["({}x{})".format(pos[0], pos[1]) for pos in zip(cols, rows)])]
+        sol = sorted(["({}x{})".format(pos[0], pos[1]) for pos in zip(cols, rows)])
+        return set(sol)
 
-    result = []
+    result = set()
     # Internal node
     for i in colinv[:]:
         for j in rowinv[:]:
@@ -20,7 +21,7 @@ def nqueen_helper(cols, rows, colinv, rowinv, n):
                 colinv.remove(i)
                 rows.append(j)
                 rowinv.remove(j)
-                result.extend(nqueen_helper(cols, rows, colinv, rowinv, n))
+                result = result.union(nqueen_helper(cols, rows, colinv, rowinv, n))
                 rowinv.append(j)
                 rows.pop()
                 colinv.append(i)
