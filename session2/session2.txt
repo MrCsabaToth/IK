@@ -11,3 +11,7 @@ Leetcode 77. Combinations
 
 Leetcode 22. n number of parantheses pairs, list all well formed combinations
 
+HW 4: Leetcode 131 Palindrome partitioning
+
+HW 5: N queen problem
+
