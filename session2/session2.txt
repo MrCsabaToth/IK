@@ -1,0 +1,4 @@
+HW 1: Leetcode 50: Pow(x, n) = x ^ n
+HW 2: Leetcode 784 Letter Case Permutation
+
+
