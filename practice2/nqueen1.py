@@ -19,7 +19,7 @@ def find_all_arrangements(n):
 
     def q_helper(cols, rows, scol, srow, level):
         length = len(scol)
-        if length:
+        if length > 0:
             col = scol[length - 1]
             row = srow[length - 1]
             if any([(abs(scol[i] - col) == abs(srow[i] - row)) for i in range(length - 1)]):

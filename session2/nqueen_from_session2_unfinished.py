@@ -1,4 +1,4 @@
-def nqueen(n):
+def find_all_arrangements(n):
     pre_res = dict()
     result = []
 
@@ -49,7 +49,7 @@ def nqueen(n):
                     colinv.remove(i)
                     rows.append(j)
                     rowinv.remove(j)
-                    result.union(nqueen_helper(cols, rows, colinv, rowinv, n))
+                    nqueen_helper(cols, rows, colinv, rowinv, n)
                     rowinv.append(j)
                     rows.pop()
                     colinv.append(i)
