@@ -26,8 +26,22 @@ class TreeNode:
 
         return nodes[1]
 
-    def is_strictly_balanced(self):
-        return False
+    def to_array_helper(self, array, index):
+        array[index] = self.val
+        if self.left:
+            self.left.to_array_helper(array, index * 2)
+
+        if self.right:
+            self.right.to_array_helper(array, index * 2 + 1)
+
+    def to_array(self):
+        array = [None] * 2 ** 6
+        self.to_array_helper(array, 1)
+        for i in range(len(array) - 1, 0, -1):
+            if array[i] is not None:
+                break
+
+        return array[1:i + 1]
 
 
 class Solution:
@@ -37,7 +51,7 @@ class Solution:
         for i, val in enumerate(inorder):
             self.inorder_indexes[inorder[i]] = i
 
-        return self.build_tree_helper(preorder, inorder)
+        return self.build_tree_helper(preorder, 0, len(preorder) - 1, inorder, 0, len(inorder) - 1)
 
     def build_tree_helper(self, preorder, start_p, end_p, inorder, start_i, end_i):
         if start_p > end_p or not preorder:
@@ -61,9 +75,15 @@ import pytest
 def test_path_sum():
     preorder = [3, 9, 20, 15, 7]
     inorder = [9, 3, 15, 20, 7]
-    expected = [0, -3, 9, -10, None, 5]
+    #    3
+    #   / \
+    #  9  20
+    #    /  \
+    #   15   7
+    expected = [3, 9, 20, None, None, 15, 7]
     solution = Solution()
-    assert solution.build_tree(preorder, inorder) == expected
+    root = solution.build_tree(preorder, inorder)
+    assert root.to_array() == expected
 
 pytest.main()
 

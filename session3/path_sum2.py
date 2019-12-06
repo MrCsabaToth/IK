@@ -56,7 +56,6 @@ class Solution:
         if node.left is None and node.right is None:
             if partial_sum == node.val:
                 self.solutions.append(stack[:])
-                print(node.val, stack, self.solutions)
         else:
             # Recursion
             remainder_sum = partial_sum - node.val
@@ -76,15 +75,15 @@ def test_path_sum():
     #  11  13  4
     # /  \    / \
     #7    2  5   1
-    values = [5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1]
+    values = [5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, None, 5, 1]
     tree = TreeNode.buildTree(values)
-    # print(tree.to_array(), values)
     summ = 22
     expected = [
        [5, 4, 11, 2],
        [5, 8, 4, 5]
     ]
     solution = Solution()
+    solution.solutions = []
     solution.path_sum2(tree, [], summ)
     assert solution.solutions == expected
 
