@@ -1,0 +1,43 @@
+Leetcode 102
+
+HW: maximum element per level: instead of temp.append() keep track of max
+
+Leetcode 429 n-ary tree
+
+bottom up level order traversal: reverse the result before returning
+
+DFS pre-order example
+Leetcode 112 path sum
+variation
+Leetcode 113
+
+bottom-up DFS: can we anser it by one sweep?
+Leetcode 543: diameter of Binary Tree
+Bottom up, because the node needs the results from the childrens first to calculate the information than pass up
+* call trickles down
+* information travels back up
+
+Leetcode 250
+uni value subtrees
+
+(LCA)
+
+Tree construction
+HW 1: determine if a given tree is height balanced
+
+Leetcode: 108
+Construct balanced BST from a sorted array of numbers
+
+HW: merge two binary search trees
+
+Leetcode 105
+Reconstruct from pre-order and in-order
+
+HW: Leetcode 106 (construct from postorder + inorder)
+145 hard postorder
+95 in-order medium
+144 pre-order
+
+Way to solve all in the same fashion iteratively:
+the stack would store node and a state machine tuples. The state machine part would track if we are hitting the pre-order knob, the in-order knob or the post-order knob
+
