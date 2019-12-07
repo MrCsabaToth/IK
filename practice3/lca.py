@@ -22,7 +22,7 @@ def lca(root, a, b):
         if node.data == b:
             paths['b'] = stack[:]
 
-        if paths['a'] and paths['b']:
+        if len(paths['a']) and len(paths['b']):
             a_rev = paths['a'][::-1]
             b_rev = paths['b'][::-1]
             for num in a_rev:
@@ -35,5 +35,8 @@ def lca(root, a, b):
 
         stack.pop()
 
+    paths['a'] = []
+    paths['b'] = []
+    paths['solution'] = None
     dfs(root, [])
     return paths['solution']
