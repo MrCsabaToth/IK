@@ -15,19 +15,19 @@ def lca(root, a, b):
         if not node or paths['solution'] is not None:
             return
 
-        stack.append(node.data)
+        stack.append(node)
 
-        if node.data == a:
+        if node == a:
             paths['a'] = stack[:]
-        if node.data == b:
+        if node == b:
             paths['b'] = stack[:]
 
-        if len(paths['a']) and len(paths['b']):
+        if paths['a'] and paths['b']:
             a_rev = paths['a'][::-1]
             b_rev = paths['b'][::-1]
-            for num in a_rev:
-                if num in b_rev:
-                    paths['solution'] = num
+            for node_a in a_rev:
+                if node_a in b_rev:
+                    paths['solution'] = node_a.data
                     return
 
         dfs(node.left, stack)
