@@ -17,11 +17,14 @@ def lca(root, a, b):
 
         stack.append(node)
 
+        # 1. Found the path to a
         if node == a:
             paths['a'] = stack[:]
+        # 2. Found the path to b
         if node == b:
             paths['b'] = stack[:]
 
+        # 3. If we have both paths find the first common element in reverse order
         if paths['a'] and paths['b']:
             a_rev = paths['a'][::-1]
             b_rev = paths['b'][::-1]
