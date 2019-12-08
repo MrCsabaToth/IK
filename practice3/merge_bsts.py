@@ -1,8 +1,3 @@
-class Node:
-    def __init__(self, key): 
-        self.key = key  
-        self.left = None  
-        self.right = None
 
 def traverseInOrder(node):
     if not node:
@@ -37,7 +32,7 @@ def buildBalancedBSTFromSorted(arr, start, end):
     if start > end:
         return None
 
-    # Overflow avoided (start + end) // 2 tought by Omkar (c)
+    # Overflow of "(start + end) // 2" avoided - Omkar
     mid = start + (end - start) // 2
     node = Node(arr[mid])
     node.left = buildBalancedBSTFromSorted(arr, start, mid - 1)
