@@ -1,0 +1,9 @@
+HW 1:
+When BST with additional subtree node count extra data:
+How can we update values when there's a rotation for balance
+
+
+Count balanced is more restrictive than height balanced (?)
+Count balance implies height balance
+
+
