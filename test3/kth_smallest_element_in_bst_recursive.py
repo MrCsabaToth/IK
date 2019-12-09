@@ -21,10 +21,13 @@ def kth_smallest_element(root, k):
             return left_search
 
         counter[0] += 1
-        if counter[0] == k:
-            return node.val
+        if counter[0] <= k:
+            if counter[0] == k:
+                return node.val
 
-        # right search
-        return walk_helper(node.right_ptr, counter)
+            # right search
+            return walk_helper(node.right_ptr, counter)
+
+        return None
 
     return walk_helper(root, [0])
