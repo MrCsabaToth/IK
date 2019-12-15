@@ -1,0 +1,4 @@
+Leetcode 269 alien dictionary
+["zy","zx"]  "zyx"
+["wrt","wrf","er","ett","rftt"]  "wertf"
+["ac","ab","b"]  "acb"
