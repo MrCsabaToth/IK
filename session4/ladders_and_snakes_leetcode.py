@@ -1,4 +1,3 @@
-# 909
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         # Generate board
@@ -14,9 +13,10 @@ class Solution:
                     continue
 
                 # reverse board (top to bottom)
-                y = N - 1 - pos // N
+                y_inv = pos // N
+                y = N - 1 - y_inv
                 # zig-zag
-                even = y % 2 == 0
+                even = y_inv % 2 == 0
                 x = pos % N
                 if not even:
                     x = N - 1 - x
