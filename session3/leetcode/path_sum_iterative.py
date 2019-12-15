@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/path-sum-ii/
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -6,24 +8,29 @@
 #         self.right = None
 
 class Solution:
-    def hasPathSum(self, root: TreeNode, sum: int) -> bool:
+    solutions = []
+
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        self.solutions = []
         if not root:
-            return []
+            return self.solutions
 
-        visit = [(root, 0)]
-        stack = []
-
+        stack = [(root, 0, root.val)]
+        partial = [root.val]
         while stack:
-            node, partial = stack.pop()
-            if not node:
-                continue
+            node, level, part_sum = stack.pop()
+            partial = partial[:level]
+            partial.append(node.val)
 
             if not node.left and not node.right:
-                if partial + node.val == sum:
-                    return True
-            else:
-                part_sum = partial + node.val
-                stack.append((node.left, part_sum))
-                stack.append((node.right, part_sum))
+                if part_sum == sum:
+                    self.solutions.append(partial[:])
 
-        return False
+            else:
+                if node.left:
+                    stack.append((node.left, level + 1, part_sum + node.left.val))
+
+                if node.right:
+                    stack.append((node.right, level + 1, part_sum + node.right.val))
+
+        return self.solutions
