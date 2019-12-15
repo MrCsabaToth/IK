@@ -9,14 +9,16 @@ def alien_order(words):
 
     nodes = []
     adj_list = []
+    chars = set()
 
     # 1. Take each word pair
     for i, word1 in enumerate(words[:-1]):
+        chars.union(set([ch for ch in word1]))
         len1 = len(word1)
         for j, word2 in enumerate(words[i:]):
+            chars.union(set([ch for ch in word2]))
             len2 = len(word2)
             # 2. Find first character which differs
-            different = False
             for k in range(min(len1, len2)):
                 ch1 = word1[k]
                 # 3.1. Optionally register node1 for ch1
@@ -34,7 +36,7 @@ def alien_order(words):
 
                 node2 = nodes.index(ch2)
 
-                if ch1 != ch2 and not different:
+                if ch1 != ch2:
                     # Means a graph edge
 
                     # 3.3. Check if invalid (direct circle)
@@ -45,52 +47,49 @@ def alien_order(words):
                     if node2 not in adj_list[node1]:
                         adj_list[node1].append(node2)
 
-                    different = True
-            
-            if k < len2:
-                for ch in word2[k:]:
-                    if not ch in nodes:
-                        nodes.append(ch)
-                        adj_list.append([])
+                    break
 
-    for ch in words[0]:
-        if not ch in nodes:
-            nodes.append(ch)
-            adj_list.append([])
+    left_out = chars - set(nodes)
+    for ch in left_out:
+        nodes.append(ch)
+        adj_list.append([])
+
+    n = len(nodes)
 
     # Underspecified input 2
     if not adj_list or all(not l for l in adj_list):
         return "".join(nodes)
 
+    print(nodes, adj_list)
+    order = [0] * n
     # 4. Topological sort - need iterative
     # 4.1 Find a good starting point for underspecified cases
     for start, ch in enumerate(nodes):
-        if adj_list[start]:
-            break
+        if adj_list[start] and not order[start]:
+            visited = [False] * n
+            q = [(start, 1)]
+            while q:
+                v, level = q.pop()
+                order[v] -= level
+                for neighbor in adj_list[v]:
+                    if not visited[neighbor]:
+                        q.append((neighbor, level + 1))
+                    else:
+                        order[v] -= level
 
-    visited = [False] * len(nodes)
-    q = [start]
-    ordered = []
-    while q:
-        v = q[-1]  # item 1, just access, don't pop
-        visited[v] = True
-        children = [x for x in adj_list[v] if not visited[x]]
-        if not children:  # no child or all of them already visited
-            ordered.insert(0, v)  # ordered = [v] + ordered
-            q.pop()
-        else:
-            q.append(children[0])  # item 2, push just one child
+    # 5. Non involved (underspecified) charecters are de priotirized
+    for i, o in enumerate(order):
+        if not o:
+            order[i] = -100000
 
     # 5. Construct abc
-    visited = [False] * len(nodes)
+    zipped = zip(nodes, order)
+    ordered = sorted(zipped, key=lambda x: -x[1])
+    print(zipped, ordered)
+
     abc = ""
     for v in ordered:
-        abc += nodes[v]
-        visited[v] = True
-
-    for i, indicator in enumerate(visited):
-        if not indicator:
-            abc += nodes[i]
+        abc += v[0]
 
     return abc
 
@@ -100,7 +99,8 @@ import pytest
 
 @pytest.mark.parametrize("words,expected", [
     (["zy", "zx"], "yxz"),
-    (["wrt","wrf","er","ett","rftt"], "wertf"),
+    (["wrt", "wrf", "er", "ett", "rftt"], "wertf"),
+    (["ac", "ab", "b"], "acb"),
 ])
 def test_alien_dict(words, expected):
     assert(alien_order(words) == expected)
