@@ -1,0 +1,36 @@
+1. Rod-cutting
+---------------
+Length L = 6
+prices[0..L] = { 0, 1, 3, 3, 8, 8, 10 }
+                 0  1  2  3  4  5  6
+
+/\ prices of certain length rod pieces
+
+Find max sales price by cutting the rod into pieces of any length
+
+
+to tell the cuts, greedy DFS a traverdal tree while looking and try to match the DP solution array
+
+HW1: get the best cut with traversal
+HW2: get the best cut by storing it while iterating
+HW3: binary type reucrsion
+
+
+
+2. Test-for-tie
+----------------
+Divide class to two weight equal groups
+Form two groups: combined weight of one is equal to the remaining group
+
+
+[1, 2, 3, 4, 5, 7], 11
+zero or one bounded knapsack problem
+
+
+3. Edit distance
+-----------------
+Levenshtein's Algorithm
+
+hard: try to solve it in a way we minimize creation of auxiliary strings
+
+
