@@ -19,12 +19,11 @@ def Test_for_tie(weights):
 def Test_for_tie2(weights):
     allsum = sum(weights)
     length = len(weights)
-    # if allsum % 2 == 1:
-    #     return False
+    if allsum % 2 == 1:
+        return False
 
     def test_for_tie_helper(weights, i, remaining):
         if remaining == 0:
-            print("wat1", i)
             return True
 
         # Stopping
@@ -36,14 +35,9 @@ def Test_for_tie2(weights):
             return False
 
         if test_for_tie_helper(weights, i + 1, remaining - weights[i]):
-            print("wat2", i, remaining)
             return True
 
-        res = test_for_tie_helper(weights, i + 1, remaining)
-        if res:
-            print("wat3", i, remaining)
-
-        return res
+        return test_for_tie_helper(weights, i + 1, remaining)
 
     return test_for_tie_helper(weights, 0, allsum // 2)
 
@@ -51,8 +45,8 @@ def Test_for_tie2(weights):
 def Test_for_tie2_memoize(weights):
     allsum = sum(weights)
     length = len(weights)
-    # if allsum % 2 == 1:
-    #     return False
+    if allsum % 2 == 1:
+        return False
 
     memo = dict()
     def test_for_tie_helper(weights, i, remaining):
@@ -87,8 +81,8 @@ def Test_for_tie2_memoize(weights):
 
 def Test_for_tie2_iterative(weights):
     allsum = sum(weights)
-    # if allsum % 2 == 1:
-    #     return False
+    if allsum % 2 == 1:
+        return False
 
     halfsum = allsum // 2
     length = len(weights)
@@ -114,6 +108,37 @@ def Test_for_tie2_iterative(weights):
     #     print(dp[k])
     return dp[halfsum][0]
 
+
+# def Test_for_tie2_iterative_tracking(weights):
+#     allsum = sum(weights)
+#     if allsum % 2 == 1:
+#         return False
+
+#     halfsum = allsum // 2
+#     length = len(weights)
+#     dp = [None] * (halfsum + 1)
+#     for i, _ in enumerate(dp):
+#         dp[i] = [(None, None)] * (length + 1)
+
+#     for i in range(length + 1):
+#         dp[0][i] = (True, ?)
+
+#     for j in range(1, halfsum + 1):
+#         dp[j][length] = (False, ?)
+
+#     for summ in range(1, halfsum + 1):
+#         for i in range(length - 1, -1, -1):
+#             result = False
+#             if summ >= weights[i]:
+#                 result = dp[summ - weights[i]][i + 1]
+
+#             dp[summ][i] = result or dp[summ][i + 1]
+
+#     # for k in range(halfsum + 1):
+#     #     print(dp[k])
+#     return dp[halfsum][0]
+
+
 import pytest
 
 
@@ -122,9 +147,9 @@ import pytest
     ([1, 2, 3, 4, 5, 8], False),
 ])
 def test_test_for_tie(weights, expected):
-    # assert(Test_for_tie(weights) == expected)
-    # assert(Test_for_tie2(weights) == expected)
-    # assert(Test_for_tie2_memoize(weights) == expected)
+    assert(Test_for_tie(weights) == expected)
+    assert(Test_for_tie2(weights) == expected)
+    assert(Test_for_tie2_memoize(weights) == expected)
     assert(Test_for_tie2_iterative(weights) == expected)
 
 
