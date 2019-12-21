@@ -69,22 +69,20 @@ def rod_cutting_iterative_6way(prices):
 
 
 def rod_cutting_recursive_2way1(prices):
-    def cut_helper(prices, remaining, partial):
-        if remaining == 0:
+    n = len(prices)  # Length equals price choices length
+
+    def cut_helper(prices, level, last_cut, partial):
+        if level == n:
             return partial + prices[0]
 
-        best = 0
-        for i in range(1, remaining + 1):
-            round_i = cut_helper(prices, remaining - i, partial + prices[i])
-            if round_i > best:
-                best = round_i
+        # Choice 1: don't make a cut
+        round_i_1 = cut_helper(prices, level + 1, last_cut, partial)
+        # Choice 2: make a cut
+        round_i_2 = cut_helper(prices, level + 1, level, partial + prices[level - last_cut])
 
-        return best
+        return max(round_i_1, round_i_2)
 
-    return cut_helper(prices, 6, 0)
-
-
-
+    return cut_helper(prices, 1, 0, 0)
 
 
 import pytest
@@ -96,7 +94,8 @@ import pytest
 def test_rod_cutting(prices, expected):
     # assert(rod_cutting_recursive_6way2(prices) == expected)
     # assert(rod_cutting_recursive_6way2_memoize(prices) == expected)
-    assert(rod_cutting_iterative_6way(prices) == expected)
+    # assert(rod_cutting_iterative_6way(prices) == expected)
+    assert(rod_cutting_recursive_2way1(prices) == expected)
 
 
 pytest.main()
