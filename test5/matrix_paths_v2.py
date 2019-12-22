@@ -32,4 +32,5 @@ def numberOfPaths(matrix):
             if matrix[i][j]:
                 matrix[i][j] = matrix[i - 1][j] + matrix[i][j - 1]
 
-    return matrix[n - 1][m - 1]
+    modulo = 10**9 + 7
+    return matrix[n - 1][m - 1] % modulo

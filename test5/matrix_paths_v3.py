@@ -34,7 +34,8 @@ def numberOfPaths(matrix):
             if matrix[i][j]:
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
 
-    return dp[n - 1][m - 1]
+    modulo = 10**9 + 7
+    return dp[n - 1][m - 1] % modulo
 
 
 import pytest
