@@ -1,0 +1,62 @@
+9. Can RDBMS act as single server K-V stores?
+FALSE -> TRUE
+No, because RDBMS is not schemaless
+Not all RDBMS support JSON fields
+Won't scale as much
+
+10. Can RDBMS act as distributed K-V stores?
+TRUE -> FALSE
+If the previous question is TRUE, then with replication and sharding we should be able to
+Although it won't scale as a K-V store
+
+
+16. Update of row-oriented storage of K-V records can be performed
+In-place
+* Out-of-place in an append-only log
+either ways
+
+Can be done in-place but that's not how it's done: it could cuase data contention.
+RocksDB, MyRocks: mysql query engine w rocksdb instead of innodb
+MongoDB in-place (????)
+
+19. How do column-oriented K-V stores manage writes
+Performs multiple writes on individual columnar units for every K-V write
+* Maintains a separate append-only log (aka journal) which is then resolved with existing columar units
+
+Could be done either way. If Q16 can be either way, this can be either way as well.
+
+30. What is the problem of mapping a single K-V to a server or set of servers
+No problem
+Metadata bloat in the cluster manager
+Uncontrolled rebalancing
+* 2 and 3 (turnsa out to be the right answer)
+
+Only metadata. Was not sure about uncontrolled rebalancing.
+
+33. In a 3 replica master-slave architecture, value of N is
+N = 1
+* N = 3
+
+I thought that maybe in such a system the master can still ask the slaves to obtain a quorum status
+
+35. What is the workload nature of URL shortener system
+Read heavy
+* Write heavy
+Mixed workload
+
+Didn't remember it being read heavy more than expected.
+
+---------------------
+
+Azure Cosmos DB
+Google Cloud Spanner
+both RDBMs based (Spanner uses RocksDB https://www.nextplatform.com/2017/02/22/google-spanner-inspires-cockroachdb-outrun/)
+scalable, consistent (ACID) and SQL capable (w joins)
+-> strecthing CAP theorem
+
+Also notable:
+CocroachDB
+ETCD: https://www.vaultproject.io/docs/configuration/storage/etcd.html
+Zookeper's DB backend (https://www.vaultproject.io/docs/configuration/storage/zookeeper.html)
+
+

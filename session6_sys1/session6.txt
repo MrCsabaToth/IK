@@ -1,0 +1,32 @@
+URL Shortener:
+
+~ 4 trillion URLs
+
+4 * (10^3)^4 = 4 * 10 ^ 12 ~ 2^2 * (2^10)^4 = 2^42
+
+a) long to short
+b) foxed length 7 characters
+c) translating back
+d) 1:m is fine
+
+two microservices: L2S, S2L
+
+base64 33% overhead
+
+a-z, A-Z, 0-9, _ - 64^7 = 2^6^7 = 2^42
+
+The integer sequence rows solution can be beneficial if the URLs are close to 4 trillion and the DB is filled up =>
+collision could be often
+
+-----------
+
+Ride Sharing (Uber)
+Drivers & Riders
+A. Riders
+ 1. Search for a Ride
+ 2. Request a Ride
+B. Drivers
+ 1. Accept or Cancel a Ride
+ 2. Report location periodically
+
+

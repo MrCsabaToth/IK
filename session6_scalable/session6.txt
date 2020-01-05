@@ -1,0 +1,28 @@
+Document Search
+=================
+trillions of documents
+100 ms response time
+40000 search / second
+
+1. Breadth-oriented: possibly multiple micro services
+Don't have time for too much details in any of those, 45 minutes for all of them
+2. Depth-oriented (like this docu problem: one or few services,
+have to go deep in the details of the service
+
+Data center dashboard
+======================
+streaming
+1000 srv, 2000 metric / s
+
+Kafka
+=======
+
+Long log file
+Index file
+skip list: just every 100 index
+
+Netflix
+==========
+
+
+
