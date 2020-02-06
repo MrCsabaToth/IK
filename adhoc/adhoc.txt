@@ -1,0 +1,85 @@
+a = [ 0 1 2 ... 51 ]
+standard deck
+
+52! different shuffles possible
+permutations of the deck
+
+prob of a given permutation
+p = 1/52!
+
+Leetcode 384
+
+def shuffle(a):
+    for i in range(len(a)):
+        x = rand(
+
+---------------------
+
+f7() -> rand(0, 7)
+f3() -> rand(0, 3)
+
+f20() -> ?
+
+3^x * 7^y
+
+7 * f3() + f7()
+if we get 20, we'll repeat
+
+def f20():
+    x = 7 * f3() + f7()
+    if x == 20:
+        return f20()
+
+    return x
+
+---------------------
+
+popular numbers:
+sorted int array a
+len(a) = k
+task: identify elenets that appear > k / 4 times
+
+(Leetcode 347?)
+
+naive 2 pointer runners yield O(k) algo.
+
+-> screenshots
+
+k = 100
+gt k/4 is 26
+
+pick 3 quarter divider elements and initiate binary search each direction to check how much that element is repeated
+then add if the domain is larger than k/4
+
+-------------------
+
+API:
+void insert(int x):
+void remove(int x):
+bool isPresent(int x):
+int getRandom():
+
+req: all O(1)
+
+see screenshot
+but if we think of duplicates
+then hashmap buckets become lists
+and we need to keep those buckets sorted -> maintain sortedness in constant time
+
+--------------------
+
+Given a list of intervals, merge the ones which overlap
+
+{(1,5), (10, 15), (2, 4), (4, 6)}
+
+(1, 6) (10, 15)
+
+----------------------
+
+1. Do mock interviews early
+2. Buy whiteboard and do as much as you can there
+3. Buy fine point markers
+4. Schedule interviews to a bunch, take off a full week
+- less travel
+- offers the same time
+
