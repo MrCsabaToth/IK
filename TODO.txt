@@ -1,0 +1,9 @@
+O(n logn)
+https://www.geeksforgeeks.org/suffix-array-set-2-a-nlognlogn-algorithm/
+https://www.geeksforgeeks.org/%C2%AD%C2%ADkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/
+
+https://en.wikipedia.org/wiki/Longest_palindromic_substring
+O(n) for rotated palindrom array decision
+
+
+
