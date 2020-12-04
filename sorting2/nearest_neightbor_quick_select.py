@@ -4,6 +4,8 @@
 # Using ../own/recursive_lomuto_quick_select_k_set_coderpad.py
 # All tests (000-019) pass except 017 times out
 
+import random
+
 class Pt(object):
     def __init__(self, x, y, p_x, p_y):
         self.x = x
