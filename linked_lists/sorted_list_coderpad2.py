@@ -43,12 +43,10 @@ class SortedArray:
 
         return min(low, high)
 
-
     def log_insert(self, val):
         pos = self.log_search(val, False)
         print(val, pos, self.arr)
         self.arr.insert(pos, val)
-
 
     def log_remove(self, val):
         pos = self.log_search(val, True)
